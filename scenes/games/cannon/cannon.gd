@@ -149,8 +149,8 @@ func on_viewer_fire(cmd_info : CommandInfo, arg_arr : PackedStringArray) -> void
 	if not arg_arr[0].is_valid_float(): return
 	if not arg_arr[1].is_valid_float(): return
 
-	var angle: float = float(arg_arr[0])
-	var power: float = float(arg_arr[1])
+	var angle: float = fmod(float(arg_arr[0]), 360.0)
+	var power: float = clampf(float(arg_arr[1]), 0, 100)
 	fire_viewer(cmd_info.sender_data.tags["display-name"], angle, power)
 
 func on_streamer_start(arg_arr : PackedStringArray) -> void:
