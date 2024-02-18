@@ -16,8 +16,8 @@ var viewers_to_add: Array = []
 @onready var cannon_sprite: Sprite2D = $Cannon/Sprite2D
 @onready var target: Area2D = $Target
 
-@onready var join_next_round: Label = $JoinNextRound
-@onready var how_to_play: Label = $HowToPlay
+@onready var join_next_round: Label = $CanvasLayer/InstructionsContainer/VBoxContainer/JoinNextRound
+@onready var how_to_play: Label = $CanvasLayer/InstructionsContainer/VBoxContainer/HowToPlay
 @onready var waiting: Label = $CanvasLayer/Waiting
 @onready var countdown: Label = $CanvasLayer/Countdown
 

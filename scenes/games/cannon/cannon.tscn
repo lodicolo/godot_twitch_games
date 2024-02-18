@@ -228,32 +228,6 @@ texture = ExtResource("2_fqpkg")
 region_enabled = true
 region_rect = Rect2(0, 0, 3072, 3072)
 
-[node name="JoinNextRound" type="Label" parent="."]
-self_modulate = Color(1, 1, 1, 0.537255)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 944.0
-offset_right = 789.0
-offset_bottom = 1004.0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_2hea8")
-theme_override_font_sizes/font_size = 31
-text = "Type !join to play on the next round!"
-
-[node name="HowToPlay" type="Label" parent="."]
-self_modulate = Color(1, 1, 1, 0.537255)
-offset_left = 61.0
-offset_top = 55.0
-offset_right = 714.0
-offset_bottom = 196.0
-theme_override_fonts/font = ExtResource("4_2hea8")
-theme_override_font_sizes/font_size = 31
-text = "Type !fire angle power to launch your bullet
-angle: 0-180
-power 0-100"
-
 [node name="ViewerContainer" type="Node2D" parent="."]
 position = Vector2(960, 832)
 
@@ -456,8 +430,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("11_mb3wv")
 theme_override_font_sizes/font_size = 61
-text = "Waiting for players
-Type !join to play"
+text = "Waiting for players..."
 horizontal_alignment = 1
 
 [node name="Countdown" type="Label" parent="CanvasLayer"]
@@ -490,6 +463,39 @@ offset_left = -801.0
 offset_top = -527.0
 offset_right = 1667.0
 offset_bottom = 876.0
+
+[node name="InstructionsContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InstructionsContainer"]
+layout_mode = 2
+
+[node name="HowToPlay" type="Label" parent="CanvasLayer/InstructionsContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.537255)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_2hea8")
+theme_override_font_sizes/font_size = 31
+text = "Type !fire angle power to launch your ball
+angle: 0-360
+power 0-100"
+
+[node name="JoinNextRound" type="Label" parent="CanvasLayer/InstructionsContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.537255)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2hea8")
+theme_override_font_sizes/font_size = 31
+text = "Type !join to play!"
 
 [connection signal="body_entered" from="Target" to="." method="_on_target_body_entered"]
 [connection signal="finished" from="CanvasLayer/Countdown" to="." method="_on_countdown_finished"]
