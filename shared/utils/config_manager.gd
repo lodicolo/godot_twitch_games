@@ -38,7 +38,7 @@ func get_config() -> Dictionary:
 
 ## get data from section
 func get_section(section: String) -> Dictionary:
-	if data.has(section):
+	if data and data.has(section):
 		return data[section]
 
 	return {}
