@@ -20,6 +20,7 @@ var viewers_to_add: Array = []
 @onready var how_to_play: Label = $CanvasLayer/InstructionsContainer/VBoxContainer/HowToPlay
 @onready var waiting: Label = $CanvasLayer/Waiting
 @onready var countdown: Label = $CanvasLayer/Countdown
+@onready var leaderboard: Leaderboard = $CanvasLayer/LeaderboardPanel/MarginContainer/Leaderboard
 
 func _ready() -> void:
 	GameConfigManager.load_config()
@@ -165,6 +166,11 @@ func on_streamer_wait(cmd_info : CommandInfo) -> void:
 
 func _on_target_body_entered(body: Node2D) -> void:
 	target.activate()
+
+	var viewer_name = body.viewer_name
+	if typeof(viewer_name) == TYPE_STRING:
+		self.leaderboard.add_points(viewer_name, 1)
+
 	change_state(GAME_STATE.WINNER)
 	next_round()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b78rc3fjm3juq"]
+[gd_scene load_steps=32 format=3 uid="uid://b78rc3fjm3juq"]
 
 [ext_resource type="Script" path="res://scenes/games/cannon/cannon.gd" id="1_ltgiq"]
 [ext_resource type="Texture2D" uid="uid://bdi1tdifvrp1s" path="res://shared/visuals/dots_pattern.png" id="2_fqpkg"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://dd1r2fwpg8dya" path="res://shared/fonts/MPLUSCodeLatin-Medium.ttf" id="11_mb3wv"]
 [ext_resource type="FontFile" uid="uid://rmkjlvce4dyv" path="res://shared/fonts/MPLUSCodeLatin-Bold.ttf" id="12_culi7"]
 [ext_resource type="Script" path="res://scenes/games/cannon/countdown.gd" id="13_7e8rs"]
+[ext_resource type="PackedScene" uid="uid://c3tsu36j60qff" path="res://scenes/ui/leaderboard/leaderboard.tscn" id="13_c6w4d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tjbxl"]
 shader = ExtResource("2_nh2hs")
@@ -459,6 +460,26 @@ offset_left = -801.0
 offset_top = -527.0
 offset_right = 1667.0
 offset_bottom = 876.0
+
+[node name="LeaderboardPanel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 352.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LeaderboardPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Leaderboard" parent="CanvasLayer/LeaderboardPanel/MarginContainer" instance=ExtResource("13_c6w4d")]
+layout_mode = 2
 
 [node name="InstructionsContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
